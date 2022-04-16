@@ -47,4 +47,12 @@ use yii\helpers\ArrayHelper;
 
 		</div>
 	</div>
+	<div class="row">
+		<div class="col s12">
+			<p>Статус заявки: <?= $model::STATUSES[$model->status]; ?></p>
+			<?= Html::a('Новая', ['/callback/back/change-status', 'id' => $model->id, 'status' => $model::STATUS_NEW], ['class' => 'btn cyan ' . ($model->status === $model::STATUS_NEW ? 'disabled' : '')]); ?>
+			<?= Html::a('В работе', ['/callback/back/change-status', 'id' => $model->id, 'status' => $model::STATUS_INPROGRESS], ['class' => 'btn ' . ($model->status === $model::STATUS_INPROGRESS ? 'disabled' : '')]); ?>
+			<?= Html::a('Обработан', ['/callback/back/change-status', 'id' => $model->id, 'status' => $model::STATUS_DONE], ['class' => 'btn teal ' . ($model->status === $model::STATUS_DONE ? 'disabled' : '')]); ?>
+		</div>
+	</div>
 </div>

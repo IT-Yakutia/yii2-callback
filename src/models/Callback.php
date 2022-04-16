@@ -8,6 +8,16 @@ use yii\behaviors\TimestampBehavior;
 
 class Callback extends ActiveRecord
 {
+    const STATUS_NEW = 10;
+    const STATUS_INPROGRESS = 15;
+    const STATUS_DONE = 20;
+
+    const STATUSES = [
+        self::STATUS_NEW => 'Новая',
+        self::STATUS_INPROGRESS => 'В работе',
+        self::STATUS_DONE => 'Обработан',
+    ];
+
     public static function tableName()
     {
         return 'callback';

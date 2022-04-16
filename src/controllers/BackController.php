@@ -56,6 +56,23 @@ class BackController extends Controller
         ]); 
     }
 
+    public function actionChangeStatus($id, $status)
+    {
+        $model = $this->findModel($id);
+        if (array_key_exists($status, $model::STATUSES)) {
+            $model->status = $status;
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Статус успешно задан!');
+            } else {
+                Yii::$app->session->setFlash('error', 'Статус не изменен!');
+            }
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        return $this->redirect(Url::previous());
+    }
+
     public function actionDelete($id)
     {
         if(false !== $this->findModel($id)->delete()) {
