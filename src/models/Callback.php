@@ -33,7 +33,7 @@ class Callback extends ActiveRecord
     public function rules()
     {
         return [
-            [['title','message', 'phone', 'name'], 'required'],
+            [['title','message', 'phone', 'name', 'is_accept_consent_pd'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['title', 'phone', 'name', 'hash'], 'string', 'max' => 255],
             [['message'], 'string'],
